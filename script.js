@@ -138,4 +138,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Run once on load to catch current scroll position
         handleScroll();
     }
+
+    // 6. Force Video Autoplay on Mobile
+    const heroVideo = document.getElementById('hero-video');
+    if (heroVideo) {
+        // Force play
+        heroVideo.play().catch(error => {
+            console.log("Autoplay prevented, waiting for interaction", error);
+            // Fallback: play on first touch
+            document.addEventListener('touchstart', () => {
+                heroVideo.play();
+            }, { once: true });
+        });
+    }
 });
