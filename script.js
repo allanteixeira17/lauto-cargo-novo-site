@@ -97,11 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Hero Video Loop Control (10s to 1m20s)
+    // 4. Hero Video Loop Control (11s to 1m20s)
     const heroVideo = document.getElementById('hero-video');
     if (heroVideo) {
-        const startTime = 11;
-        const endTime = 80; // 1:20 is 80 seconds
+        const startTime = 0;
+        const endTime = 70; // 1:10 is 70 seconds
 
         heroVideo.addEventListener('timeupdate', () => {
             if (heroVideo.currentTime >= endTime) {
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Ensure it starts at 10s on first load
+        // Ensure it starts at 11s on first load
         heroVideo.addEventListener('loadedmetadata', () => {
             if (heroVideo.currentTime < startTime) {
                 heroVideo.currentTime = startTime;
