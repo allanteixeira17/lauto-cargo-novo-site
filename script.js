@@ -120,4 +120,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // 5. Header Scroll Effect
+    const header = document.querySelector('header');
+    if (header) {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-[#001B3D]', 'shadow-2xl');
+                header.classList.remove('bg-primary-container/10', 'backdrop-blur-lg', 'border-white/5');
+            } else {
+                header.classList.remove('bg-[#001B3D]', 'shadow-2xl');
+                header.classList.add('bg-primary-container/10', 'backdrop-blur-lg', 'border-white/5');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        // Run once on load to catch current scroll position
+        handleScroll();
+    }
 });
