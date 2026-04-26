@@ -110,13 +110,13 @@
 <body class="bg-background text-on-surface font-body-md">
     <!-- TopAppBar -->
     <header
-        class="bg-white/10 backdrop-blur-md border-b border-white/20 shadow-lg top-0 sticky z-50 transition-all duration-300">
+        class="absolute inset-x-0 top-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/10 shadow-lg transition-all duration-300">
         <nav
             class="flex justify-between items-center h-20 px-6 md:px-10 max-w-[1440px] mx-auto w-full font-['Inter'] text-[13px] tracking-tight font-semibold text-white">
             <a href="index.html" class="flex items-center gap-2">
-                <img src="img/logo.png" alt="L'auto Cargo Logo" class="h-10 md:h-12 w-auto object-contain brightness-0 invert">
+                <img src="img/logo.png" alt="L'auto Cargo Logo" class="h-10 md:h-12 w-auto object-contain">
             </a>
-            
+
             <!-- Desktop Menu -->
             <div class="hidden xl:flex gap-6 items-center">
                 <a class="hover:text-secondary-container transition-colors" href="cotacao.html">Cotação Online</a>
@@ -125,7 +125,8 @@
                 <a class="hover:text-secondary-container transition-colors" href="#">Dificuldades de Entrega</a>
                 <a class="hover:text-secondary-container transition-colors" href="#">Localização</a>
                 <a class="hover:text-secondary-container transition-colors"
-                    href="https://atracaodetalentos.totvs.app/oportunidadeslautocargo/extended" target="_blank">Trabalhe Conosco</a>
+                    href="https://atracaodetalentos.totvs.app/oportunidadeslautocargo/extended" target="_blank">Trabalhe
+                    Conosco</a>
             </div>
 
             <div class="flex items-center gap-4">
@@ -133,16 +134,18 @@
                     class="hidden md:block bg-secondary-container text-primary px-6 py-2.5 rounded hover:bg-secondary transition-all duration-200 machined-effect font-label-bold text-label-bold">
                     Fale Conosco
                 </button>
-                
+
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="xl:hidden text-white p-2 hover:bg-white/10 rounded transition-colors">
+                <button id="mobile-menu-btn"
+                    class="xl:hidden text-white p-2 hover:bg-white/10 rounded transition-colors">
                     <span class="material-symbols-outlined text-3xl" data-icon="menu">menu</span>
                 </button>
             </div>
         </nav>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 z-50 bg-[#001b3d]/95 backdrop-blur-xl translate-x-full transition-transform duration-300 xl:hidden">
+        <div id="mobile-menu"
+            class="fixed inset-0 z-50 bg-[#001b3d]/95 backdrop-blur-xl translate-x-full transition-transform duration-300 xl:hidden">
             <div class="flex flex-col h-full p-8">
                 <div class="flex justify-between items-center mb-12">
                     <img src="img/logo.png" alt="Logo" class="h-10 brightness-0 invert">
@@ -151,15 +154,20 @@
                     </button>
                 </div>
                 <nav class="flex flex-col gap-6 text-xl font-semibold text-white">
-                    <a href="cotacao.html" class="hover:text-secondary-container py-2 border-b border-white/10">Cotação Online</a>
-                    <a href="#rastreio" class="hover:text-secondary-container py-2 border-b border-white/10">Rastreamento</a>
+                    <a href="cotacao.html" class="hover:text-secondary-container py-2 border-b border-white/10">Cotação
+                        Online</a>
+                    <a href="#rastreio"
+                        class="hover:text-secondary-container py-2 border-b border-white/10">Rastreamento</a>
                     <a href="#" class="hover:text-secondary-container py-2 border-b border-white/10">Área do Cliente</a>
-                    <a href="#" class="hover:text-secondary-container py-2 border-b border-white/10">Dificuldades de Entrega</a>
+                    <a href="#" class="hover:text-secondary-container py-2 border-b border-white/10">Dificuldades de
+                        Entrega</a>
                     <a href="#" class="hover:text-secondary-container py-2 border-b border-white/10">Localização</a>
-                    <a href="https://atracaodetalentos.totvs.app/oportunidadeslautocargo/extended" target="_blank" class="hover:text-secondary-container py-2">Trabalhe Conosco</a>
+                    <a href="https://atracaodetalentos.totvs.app/oportunidadeslautocargo/extended" target="_blank"
+                        class="hover:text-secondary-container py-2">Trabalhe Conosco</a>
                 </nav>
                 <div class="mt-auto">
-                    <button class="w-full bg-secondary-container text-primary py-4 rounded font-bold uppercase tracking-widest">
+                    <button
+                        class="w-full bg-secondary-container text-primary py-4 rounded font-bold uppercase tracking-widest">
                         Fale Conosco
                     </button>
                 </div>
@@ -168,7 +176,7 @@
     </header>
     <main>
         <!-- Hero Section -->
-        <section class="relative min-h-[600px] lg:h-[800px] flex items-center overflow-hidden pt-20">
+        <section class="relative min-h-[600px] lg:h-[800px] flex items-center overflow-hidden">
             <div class="absolute inset-0 z-0">
                 <video id="hero-video" autoplay muted loop playsinline class="w-full h-full object-cover">
                     <source src="video/videohero.mp4" type="video/mp4">
