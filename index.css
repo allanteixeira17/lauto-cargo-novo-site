@@ -20,3 +20,26 @@ body {
     background: #fe6b00;
     color: white;
 }
+
+/* Scroll Video Section */
+#scroll-video-container {
+    background-color: #001B3D;
+}
+
+#scroll-video {
+    z-index: 1;
+    pointer-events: none;
+    object-fit: cover;
+    background: #001B3D;
+}
+
+.scroll-text {
+    z-index: 20;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.scroll-text.active {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}

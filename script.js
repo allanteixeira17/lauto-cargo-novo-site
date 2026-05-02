@@ -151,4 +151,73 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { once: true });
         });
     }
+
+    // 7. Scroll-Linked Video Animation (High Performance Smooth Version)
+    const scrollContainer = document.getElementById('scroll-video-container');
+    const scrollVideo = document.getElementById('scroll-video');
+    const scrollTexts = document.querySelectorAll('.scroll-text');
+
+    if (scrollContainer && scrollVideo) {
+        let targetProgress = 0;
+        let currentProgress = 0;
+        let isVideoReady = false;
+
+        // Force video to load and be ready for seeking
+        scrollVideo.addEventListener('loadedmetadata', () => {
+            isVideoReady = true;
+            console.log("Video Scroll: Ready to seek.");
+        });
+
+        // Loop for optimized mapping (Fast LERP + Seek Lock)
+        let isSeeking = false;
+
+        scrollVideo.addEventListener('seeked', () => {
+            isSeeking = false;
+        });
+
+        const renderLoop = () => {
+            // Fast LERP (0.5): smooths out mouse wheel "ticks" but feels instant
+            currentProgress += (targetProgress - currentProgress) * 0.5;
+
+            if (isVideoReady && scrollVideo.duration && !isSeeking) {
+                const targetTime = scrollVideo.duration * currentProgress;
+                
+                // Only seek if the difference is at least 1 frame (~33ms at 30fps)
+                if (Math.abs(scrollVideo.currentTime - targetTime) > 0.033) {
+                    isSeeking = true;
+                    scrollVideo.currentTime = targetTime;
+                }
+            }
+
+            // Text Animations
+            scrollTexts.forEach((text, index) => {
+                const range = 1 / scrollTexts.length;
+                const start = index * range + 0.05;
+                const end = (index + 1) * range - 0.05;
+                
+                if (targetProgress >= start && targetProgress <= end) {
+                    text.classList.add('active');
+                } else {
+                    text.classList.remove('active');
+                }
+            });
+
+            requestAnimationFrame(renderLoop);
+        };
+
+        const handleScroll = () => {
+            const rect = scrollContainer.getBoundingClientRect();
+            const totalHeight = scrollContainer.offsetHeight - window.innerHeight;
+            let p = -rect.top / totalHeight;
+            targetProgress = Math.max(0, Math.min(1, p));
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        
+        // Start the loop
+        requestAnimationFrame(renderLoop);
+
+        // Preload video explicitly
+        scrollVideo.load();
+    }
 });
