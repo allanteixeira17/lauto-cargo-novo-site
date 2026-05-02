@@ -180,7 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
             currentProgress += (targetProgress - currentProgress) * 0.5;
 
             if (isVideoReady && scrollVideo.duration && !isSeeking) {
-                const targetTime = scrollVideo.duration * currentProgress;
+                // Limita a reprodução aos primeiros 5 segundos
+                const maxTime = Math.min(5, scrollVideo.duration);
+                const targetTime = maxTime * currentProgress;
                 
                 // Only seek if the difference is at least 1 frame (~33ms at 30fps)
                 if (Math.abs(scrollVideo.currentTime - targetTime) > 0.033) {
@@ -189,13 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Text Animations
+            // Sincronização das Legendas com o movimento do vídeo
             scrollTexts.forEach((text, index) => {
-                const range = 1 / scrollTexts.length;
-                const start = index * range + 0.05;
-                const end = (index + 1) * range - 0.05;
+                const total = scrollTexts.length;
+                const part = 1 / total;
+                const start = index * part;
+                const end = (index + 1) * part;
                 
-                if (targetProgress >= start && targetProgress <= end) {
+                // Usamos currentProgress para que o texto apareça junto com o movimento do vídeo
+                if (currentProgress >= start && currentProgress <= end) {
                     text.classList.add('active');
                 } else {
                     text.classList.remove('active');
